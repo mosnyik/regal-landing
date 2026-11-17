@@ -14,7 +14,6 @@ export const metadata: Metadata = {
   title: "Regal Cyber Academy | Governance, Risk and Compliance (GRC) Academy",
   description:
     "Build practical GRC skills and become industry-ready. Live instructor-led sessions, hands-on labs, real-world examples and practical projects.",
-  icons: { icon: "/favicon.ico" },
 };
 
 export const viewport: Viewport = { themeColor: "#028090" };
