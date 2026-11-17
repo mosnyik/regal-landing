@@ -13,8 +13,8 @@ Built with **Next.js 16 (App Router, Cache Components)**, **React 19**, **TypeSc
 - 💳 **Stripe Checkout integration**, from form submission to verified payment confirmation
 - 🔐 **Signed webhook processing** with idempotent updates and async payment support
 - 🎛️ **A single enrollment switch** that controls every call-to-action on the site
-- 🧾 **Three server-validated forms** (enrollment, waitlist, contact) with spam protection
-- 🛡️ **Security-first backend**: no card data stored, constant-time token checks, CSV injection protection
+- 🧾 **Three server-validated forms** (enrollment, waitlist, contact) with built-in spam protection
+- 🛡️ **Security-first backend**: no card data stored, access-controlled data, hardened data exports
 - 📱 **Fully responsive, accessible UI** with a custom design system and reduced-motion support
 - ⚡ **Static-first performance**: the marketing page is prerendered, and only the payment and admin endpoints run on demand
 
@@ -75,25 +75,14 @@ This covers 7 buttons across the header, hero, cohort section, final call-to-act
 | Form | Highlights |
 |---|---|
 | **Enrollment** | Required and optional fields, email and phone validation, SMS/email consent capture, saved before payment, staff notification, Stripe handoff |
-| **Waitlist** | Duplicate-email prevention, signed one-click **unsubscribe links** (HMAC), export and delete-on-request |
+| **Waitlist** | Duplicate-email prevention, secure one-click **unsubscribe links**, export and delete-on-request |
 | **Contact inquiry** | Validation, staff email with reply-to set to the visitor, success and error states |
 
 All forms use **React 19 Server Actions** with `useActionState`, keep field values after errors, and show accessible inline errors (`aria-invalid`, `aria-describedby`, `role="alert"`).
 
-### Spam protection (no CAPTCHA friction)
-A hidden honeypot field, a minimum time-to-submit check and per-IP rate limiting. Bots get a fake success response, so they learn nothing.
-
-### Admin API
-A token-protected endpoint for staff to export and manage data:
-
-```bash
-# JSON or CSV export
-curl -H "Authorization: Bearer $ADMIN_TOKEN" "https://site/api/admin/enrollments?format=csv"
-# Delete a waitlist entry on request
-curl -X DELETE -H "Authorization: Bearer $ADMIN_TOKEN" "https://site/api/admin/waitlist?email=jane@example.com"
-```
-
-It uses constant-time token comparison and guards CSV exports against **formula injection**.
+### Spam protection & data access
+- **Layered spam protection** that runs entirely server-side, with no CAPTCHA friction for real visitors.
+- **Access-controlled submissions:** stored data is never publicly served and is available only to authorized staff, who can export it and delete entries on request (privacy compliance).
 
 ### Content without code changes
 Cohort dates, events, testimonials, tools and contact details all live in [`content/site.ts`](content/site.ts). Past events are labeled **"Completed"** automatically, with dates shown in US Eastern Time.
@@ -128,7 +117,7 @@ A bold "printed course flyer" design system in the **Teal Trust** palette:
 | Payments | Stripe Checkout + webhooks (`stripe` v23) |
 | Forms | Server Actions + `useActionState` |
 | Email | Resend HTTP API (logs to the console in development) |
-| Storage | Pluggable storage layer (`lib/store.ts`), JSON files by default |
+| Storage | Pluggable storage layer, ready for a hosted database |
 
 ---
 
@@ -150,8 +139,7 @@ pnpm dev
 | `STRIPE_PRICE_ID` | One-time USD tuition price |
 | `STRIPE_WEBHOOK_SECRET` | Signing secret for `/api/stripe/webhook` |
 | `RESEND_API_KEY`, `MAIL_FROM` | Email notifications |
-| `ADMIN_TOKEN` | Admin API access |
-| `UNSUBSCRIBE_SECRET` | Signs waitlist unsubscribe links |
+| `ADMIN_TOKEN`, `UNSUBSCRIBE_SECRET` | Long random secrets; never commit them |
 
 ### Testing payments locally
 
@@ -174,19 +162,18 @@ Use Stripe test card `4242 4242 4242 4242` with any future expiry date and any C
 app/
   actions.ts                  Server Actions: enrollment → Stripe, waitlist, inquiry, unsubscribe
   api/stripe/webhook/         Signed Stripe webhook handler
-  api/admin/[collection]/     Token-protected export/delete API
   enroll/success/             Post-payment confirmation (verified with Stripe)
   page.tsx                    Landing page
 components/                   Header, enroll modal + forms, events, countdown, icons
 content/site.ts               All editable content and cohort settings
-lib/                          stripe, store, mail, spam, tokens, validation
+lib/                          Stripe, storage, email and validation helpers
 ```
 
 ---
 
 ## Deployment Notes
 
-The storage layer writes JSON files by default, which suits a VPS or other long-running Node server. For serverless hosting (Vercel, Netlify), swap `lib/store.ts` for a hosted database such as Postgres or Supabase. The rest of the app depends only on its small API (`insert`, `update`, `remove`, `readAll`).
+The storage layer is pluggable. Connect a hosted database (for example Postgres or Supabase) for serverless hosting such as Vercel or Netlify; the rest of the app is unaffected.
 
 ---
 
@@ -195,7 +182,7 @@ The storage layer writes JSON files by default, which suits a VPS or other long-
 **Nyikwagh Moses** is a full-stack developer specializing in **Next.js, TypeScript and payment integrations**. This project shows:
 
 - End-to-end **Stripe** integration: Checkout, webhooks, idempotency and reconciliation
-- Secure server-side design: validation, rate limiting, signed tokens, least-exposure data handling
+- Secure server-side design: validation, abuse protection and careful data handling
 - Turning a written business blueprint into a polished, conversion-focused product
 - Modern React and Next.js patterns: Server Actions, Cache Components, accessible client components
 
