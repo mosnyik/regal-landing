@@ -1,7 +1,7 @@
 "use server";
 
 import { headers } from "next/headers";
-import { cohort, enrolmentStatus, site } from "@/content/site";
+import { cohortRecordLabel, enrolmentStatus, site } from "@/content/site";
 import { createEnrollmentCheckout, isStripeConfigured } from "@/lib/stripe";
 import { checkSpam } from "@/lib/spam";
 import { insert, insertUniqueEmail, update } from "@/lib/store";
@@ -121,7 +121,7 @@ export async function submitEnrolment(_prev: FormState, fd: FormData): Promise<F
     record = await insert("enrollments", {
       ...values,
       consent: true,
-      cohort: cohort.name,
+      cohort: cohortRecordLabel,
       paymentStatus: "pending",
     });
   } catch (err) {
@@ -146,7 +146,7 @@ export async function submitEnrolment(_prev: FormState, fd: FormData): Promise<F
       enrollmentId: record.id,
       email: values.email,
       fullName: values.fullName,
-      cohort: cohort.name,
+      cohort: cohortRecordLabel,
     });
     await update("enrollments", (r) => r.id === record.id, { stripeSessionId: session.id });
     return { status: "success", redirectTo: session.url! };

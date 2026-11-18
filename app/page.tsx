@@ -338,7 +338,7 @@ export default function Home() {
             <p className="eyebrow">Upcoming cohort</p>
             <h2 id="cohort-title">Your GRC Journey Starts Here.</h2>
             <p className="sub">
-              Cohorts run twice a year, in Spring and Fall. {cohort.season} is below; {cohort.nextSeason} dates
+              Cohorts run twice a year, in Spring and Fall. The {cohort.season} cohort is below; {cohort.nextSeason} dates
               will be announced soon.
             </p>
           </div>
@@ -373,7 +373,7 @@ export default function Home() {
               {!isOpen && (
                 <p className="cohort-note">
                   Enrolment for this cohort is closed. Join the waitlist and we&apos;ll email you when enrolment opens
-                  for {cohort.nextSeason}.
+                  for the {cohort.nextSeason} cohort.
                 </p>
               )}
             </article>

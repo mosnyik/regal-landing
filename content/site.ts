@@ -32,9 +32,10 @@ export const site = {
 };
 
 export const cohort = {
-  name: "Spring 2027 Cohort",
-  season: "Spring 2027",
-  nextSeason: "Fall 2027",
+  /** Shown on the site. Kept year-free so it can be reused each cycle — just update the dates below. */
+  name: "Spring Cohort",
+  season: "Spring",
+  nextSeason: "Fall",
   lateEnrolmentCloses: "2027-02-20",
   trainingStarts: "2027-01-25",
   duration: "12 weeks",
@@ -44,6 +45,12 @@ export const cohort = {
   // TODO: refund policy one-liner shown under the pay button.
   refundNote: "[Refund policy, e.g. full refund before first class]",
 };
+
+/**
+ * Internal cohort label for enrolment records and Stripe metadata. Includes the
+ * year (from trainingStarts) so records from different years stay distinct.
+ */
+export const cohortRecordLabel = `${cohort.name} ${cohort.trainingStarts.slice(0, 4)}`;
 
 export const instructor = {
   name: "Debbie Ibinayo",
