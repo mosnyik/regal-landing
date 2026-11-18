@@ -147,38 +147,34 @@ export const testimonial = {
 
 export type Faq = { q: string; a: string };
 
-/** TODO: answers in [brackets] need confirming by the academy. */
+/** FAQ — wording from the website blueprint. */
 export const faqs: Faq[] = [
   {
-    q: "Do I need a technical or GRC background?",
-    a: "No. The programme is built for beginners and career changers. [Add any recommended prerequisites, e.g. basic computer skills.]",
+    q: "Do I need technical or GRC background?",
+    a: "No. You don’t need a technical or GRC background, and people move into GRC from many fields, including finance, healthcare, legal, and project management.",
   },
   {
-    q: "How much does it cost, and can I pay in instalments?",
-    a: "The programme fee is [PRICE], paid securely online via Stripe when you enrol. [Confirm whether instalment plans are available.]",
+    q: "I’m a recent graduate. Can I enroll?",
+    a: "Yes. Work experience is optional on the enrollment form.",
   },
   {
-    q: "When are the live classes held?",
-    a: "Classes are held live online over 12 weeks. [Add the class days and times, with time zone.]",
+    q: "How long is the program?",
+    a: "The program runs 12 weeks.",
   },
   {
-    q: "Are the sessions recorded?",
-    a: "This is a live programme, not a library of recorded videos. You learn in real time with your instructor and cohort. [Confirm what happens if a learner misses a session.]",
+    q: "How often do cohorts run?",
+    a: "Twice a year, with a Spring cohort and a Fall cohort.",
   },
   {
-    q: "What will I have at the end?",
-    a: "Practical GRC skills, hands-on lab experience, a portfolio-ready capstone project you can show employers, and a certificate of completion.",
+    q: "Are classes live or recorded?",
+    a: "Classes are live and taught by instructors. They are not recorded lessons.",
   },
   {
-    q: "What happens after I enrol?",
-    a: "After you submit your details you'll be taken to Stripe to pay securely. Once payment is confirmed you'll get a receipt by email, and we'll email you before training starts with your class schedule and everything you need.",
+    q: "What if enrollment is closed?",
+    a: "Join the waitlist and we’ll email you when enrollment opens for the next cohort.",
   },
   {
-    q: "What is your refund policy?",
-    a: "[Refund policy, e.g. full refund before the first class.]",
-  },
-  {
-    q: "What if enrolment is closed?",
-    a: "Cohorts run twice a year, in Spring and Fall. When enrolment is closed you can join the waitlist and we'll email you as soon as enrolment opens for the next cohort.",
+    q: "What is the capstone project?",
+    a: "It’s a practical project where you apply what you’ve learned throughout the program, and you finish with work you can show employers.",
   },
 ];

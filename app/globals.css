@@ -23,6 +23,9 @@
   /* Soft dark shadows for light surfaces. */
   --shadow-card: 0 1px 3px rgba(11, 46, 51, 0.1), 0 16px 36px -18px rgba(11, 46, 51, 0.45);
   --shadow-card-hover: 0 2px 6px rgba(11, 46, 51, 0.12), 0 26px 52px -22px rgba(11, 46, 51, 0.55);
+  /* Soft light (teal-tinted) shadows for dark surfaces, plus a faint top highlight. */
+  --shadow-dark: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 8px 22px -8px rgba(2, 128, 144, 0.55);
+  --shadow-dark-hover: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 14px 32px -10px rgba(2, 128, 144, 0.7);
   /* Dark surfaces: ink blended with soft teal light. */
   --blend-section:
     radial-gradient(ellipse 55% 60% at 90% 0%, rgba(2, 128, 144, 0.32), transparent 70%),
@@ -83,12 +86,12 @@ svg { flex: none; }
 /* ------------------------------------------------------------- Buttons */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem;
-  min-height: 2.75rem; padding: 0.7rem 1.4rem;
+  min-height: 2.75rem; padding: 0.7rem 1.4rem; box-shadow: var(--shadow-dark);
   background: var(--ink); color: var(--white); border: 1px solid transparent; border-radius: 999px;
   font: 500 0.94rem/1.1 var(--body); text-decoration: none; text-align: center; white-space: nowrap; cursor: pointer;
   transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s var(--ease), box-shadow 0.2s;
 }
-.btn:hover { background: #18434a; box-shadow: 0 10px 24px -14px rgba(11, 46, 51, 0.6); }
+.btn:hover { background: #18434a; box-shadow: var(--shadow-dark-hover); transform: translateY(-1px); }
 .btn:active { transform: translateY(1px); }
 .btn:disabled { opacity: 0.7; cursor: progress; }
 .btn svg { transition: transform 0.2s var(--ease); }
@@ -97,7 +100,7 @@ svg { flex: none; }
 .btn-sm { min-height: 2.5rem; padding: 0.55rem 1.15rem; font-size: 0.9rem; }
 .btn-block { width: 100%; }
 .btn-dark { background: var(--ink); color: var(--white); }
-.btn-dark:hover { background: #18434a; box-shadow: none; }
+.btn-dark:hover { background: #18434a; }
 /* Light buttons carry a soft dark shadow so they lift off the page. */
 .btn-white, .btn-outline { box-shadow: 0 1px 2px rgba(11, 46, 51, 0.12), 0 8px 20px -10px rgba(11, 46, 51, 0.45); }
 .btn-white:hover, .btn-outline:hover { box-shadow: 0 2px 4px rgba(11, 46, 51, 0.14), 0 14px 28px -12px rgba(11, 46, 51, 0.55); transform: translateY(-1px); }
@@ -144,7 +147,7 @@ svg { flex: none; }
 .webinar-card {
   display: grid; gap: 1.1rem; padding: clamp(1.5rem, 3vw, 2rem);
   background: var(--blend-card); color: var(--white); border-radius: var(--radius-lg);
-  box-shadow: 0 40px 70px -40px rgba(11, 46, 51, 0.7);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 30px 60px -28px rgba(2, 128, 144, 0.6);
 }
 .webinar-tag { display: inline-flex; align-items: center; gap: 0.55rem; justify-self: start; color: var(--on-dark-2); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; }
 .webinar-tag .badge-dot { color: var(--mint); }
@@ -253,7 +256,7 @@ svg { flex: none; }
 .dark .eyebrow { color: var(--on-dark-2); }
 .dark h2 { color: var(--white); }
 .dark .sub { color: var(--on-dark); }
-.dark.who .who-list li { background: rgba(255, 255, 255, 0.04); border-color: var(--line-dark); color: var(--white); }
+.dark.who .who-list li { background: rgba(255, 255, 255, 0.04); border-color: var(--line-dark); color: var(--white); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 10px 28px -14px rgba(2, 195, 154, 0.35); }
 .dark.who .who-list li .icon-tile { background: rgba(2, 195, 154, 0.12); color: var(--mint); }
 .dark.who .who-closing { border-color: rgba(255, 255, 255, 0.22); color: var(--on-dark); }
 .dark.who .who-closing .icon-tile { background: rgba(255, 255, 255, 0.06); color: var(--mint); }

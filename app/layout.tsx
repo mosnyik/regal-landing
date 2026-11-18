@@ -75,7 +75,7 @@ function Footer() {
             <li><Link href="/#top">Home</Link></li>
             <li><Link href="/#who">Who It&apos;s For</Link></li>
             <li><Link href="/#programmes">Programmes</Link></li>
-            {showWebinars && <li><Link href="/#webinars">Webinars</Link></li>}
+            {showWebinars && <li><Link href="/#webinars">Events &amp; Webinars</Link></li>}
             <li><Link href="/#faq">FAQ</Link></li>
             <li><Link href="/#enrol">Upcoming Cohorts</Link></li>
             <li><Link href="/#testimonials">Testimonials</Link></li>

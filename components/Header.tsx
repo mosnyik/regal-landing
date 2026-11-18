@@ -8,7 +8,7 @@ import { EnrolButton } from "./Enroll";
 const NAV = [
   { href: "/#top", label: "Home" },
   { href: "/#programmes", label: "Programmes" },
-  { href: "/#webinars", label: "Webinars", webinar: true },
+  { href: "/#webinars", label: "Events & Webinars", webinar: true },
   { href: "/#faq", label: "FAQ" },
   { href: "/#contact", label: "Contact Us" },
 ];
