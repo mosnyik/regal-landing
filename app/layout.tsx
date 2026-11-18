@@ -10,10 +10,32 @@ import "./globals.css";
 const display = Anton({ variable: "--font-display", subsets: ["latin"], weight: "400" });
 const body = Archivo({ variable: "--font-body", subsets: ["latin"], weight: ["400", "500", "600", "700", "800"] });
 
+const title = "Regal Cyber Academy | Governance, Risk and Compliance (GRC) Academy";
+const description =
+  "Build practical GRC skills and become industry-ready. Live instructor-led sessions, hands-on labs, real-world examples and practical projects.";
+
 export const metadata: Metadata = {
-  title: "Regal Cyber Academy | Governance, Risk and Compliance (GRC) Academy",
-  description:
-    "Build practical GRC skills and become industry-ready. Live instructor-led sessions, hands-on labs, real-world examples and practical projects.",
+  // Absolute base for share links and preview images. Set SITE_URL to the live domain.
+  metadataBase: new URL(process.env.SITE_URL ?? "http://localhost:3000"),
+  title,
+  description,
+  alternates: { canonical: "/" },
+  // Link previews on WhatsApp, Facebook, LinkedIn, Instagram DMs, iMessage, Slack…
+  // (the image comes from app/opengraph-image.jpg)
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: site.name,
+    title,
+    description,
+    locale: "en_US",
+  },
+  // X / Twitter large preview card (image from app/twitter-image.jpg)
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 export const viewport: Viewport = { themeColor: "#028090" };
