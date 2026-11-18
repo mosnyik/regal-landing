@@ -16,7 +16,7 @@ export default function PrivacyPage() {
         </p>
         <h2>What we collect</h2>
         <ul>
-          <li>Inquiries: your name, email address, subject and message.</li>
+          <li>Enquiries: your name, email address and message.</li>
           <li>Enrollments: your name, email address, phone number, and optionally your work experience and industry.</li>
           <li>Waitlist: your name and email address.</li>
         </ul>

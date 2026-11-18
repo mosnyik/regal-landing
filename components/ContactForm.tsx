@@ -5,15 +5,6 @@ import { submitEnquiry } from "@/app/actions";
 import { initialFormState } from "@/lib/validation";
 import { Field, FormMessage, SpamGuard, SubmitButton } from "./FormBits";
 
-const SUBJECTS = [
-  "Is this programme right for me?",
-  "Programme content and schedule",
-  "Fees and payment",
-  "Upcoming cohorts",
-  "Partnerships",
-  "Something else",
-];
-
 export function ContactForm() {
   const [state, action] = useActionState(submitEnquiry, initialFormState);
 
@@ -50,15 +41,6 @@ export function ContactForm() {
           autoComplete="email"
         />
       </div>
-      <Field id="ct-subject" name="subject" label="Subject / Enquiry Type" state={state} required>
-        {({ defaultValue, ...p }) => (
-          <select {...p} defaultValue={defaultValue ?? SUBJECTS[0]}>
-            {SUBJECTS.map((s) => (
-              <option key={s}>{s}</option>
-            ))}
-          </select>
-        )}
-      </Field>
       <Field id="ct-message" name="message" label="Message" state={state} required>
         {(p) => <textarea {...p} rows={5} />}
       </Field>

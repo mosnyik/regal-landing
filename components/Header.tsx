@@ -8,12 +8,14 @@ import { EnrolButton } from "./Enroll";
 const NAV = [
   { href: "/#top", label: "Home" },
   { href: "/#programmes", label: "Programmes" },
+  { href: "/#webinars", label: "Webinars", webinar: true },
   { href: "/#faq", label: "FAQ" },
   { href: "/#contact", label: "Contact Us" },
 ];
 
-export function Header() {
+export function Header({ showWebinars = false }: { showWebinars?: boolean }) {
   const [open, setOpen] = useState(false);
+  const nav = NAV.filter((n) => !n.webinar || showWebinars);
 
   useEffect(() => {
     if (!open) return;
@@ -26,12 +28,12 @@ export function Header() {
     <header className="topbar">
       <div className="wrap topbar-inner">
         <Link href="/#top" className="logo" aria-label="Regal Cyber Academy — home" onClick={() => setOpen(false)}>
-          <Image src="/brand/logo-on-dark.png" alt="Regal Cyber Academy" width={1128} height={254} priority />
+          <Image src="/brand/logo-color.png" alt="Regal Cyber Academy" width={1128} height={254} priority />
         </Link>
 
         <nav className={`nav${open ? " is-open" : ""}`} id="site-nav" aria-label="Main">
           <ul>
-            {NAV.map((n) => (
+            {nav.map((n) => (
               <li key={n.href}>
                 <Link href={n.href} onClick={() => setOpen(false)}>
                   {n.label}

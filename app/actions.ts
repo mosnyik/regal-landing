@@ -34,7 +34,6 @@ export async function submitEnquiry(_prev: FormState, fd: FormData): Promise<For
   const values = {
     fullName: str(fd, "fullName", 120),
     email: str(fd, "email", 254),
-    subject: str(fd, "subject", 160),
     message: str(fd, "message", 5000),
   };
 
@@ -42,7 +41,6 @@ export async function submitEnquiry(_prev: FormState, fd: FormData): Promise<For
   if (!values.fullName) errors.fullName = "Please enter your full name.";
   if (!values.email) errors.email = "Please enter your email address.";
   else if (!isEmail(values.email)) errors.email = "Please enter a valid email address.";
-  if (!values.subject) errors.subject = "Please choose a subject.";
   if (values.message.length < 10) errors.message = "Please enter a message (at least 10 characters).";
   if (Object.keys(errors).length) return invalid(errors, values);
 
@@ -58,7 +56,7 @@ export async function submitEnquiry(_prev: FormState, fd: FormData): Promise<For
     await sendMail({
       to: site.contactEmail,
       replyTo: values.email,
-      subject: `Website inquiry: ${values.subject}`,
+      subject: `Website enquiry from ${values.fullName}`,
       text: formatFields(values),
     });
     return { status: "success" };

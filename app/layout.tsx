@@ -2,9 +2,10 @@ import type { Metadata, Viewport } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Inter, Space_Grotesk } from "next/font/google";
-import { enrolmentStatus, site } from "@/content/site";
+import { enrolmentStatus, site, webinars } from "@/content/site";
 import { EnrolLink, EnrolProvider } from "@/components/Enroll";
 import { Header } from "@/components/Header";
+import { WebinarBar } from "@/components/Webinar";
 import "./globals.css";
 
 const display = Space_Grotesk({ variable: "--font-display", subsets: ["latin"], weight: ["500", "600", "700"] });
@@ -38,7 +39,9 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = { themeColor: "#0b2e33" };
+export const viewport: Viewport = { themeColor: "#ffffff" };
+
+const showWebinars = webinars.enabled && webinars.items.length > 0;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
@@ -48,7 +51,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
         <EnrolProvider status={enrolmentStatus}>
-          <Header />
+          {showWebinars && <WebinarBar items={webinars.items} />}
+          <Header showWebinars={showWebinars} />
           {children}
           <Footer />
         </EnrolProvider>
@@ -69,8 +73,9 @@ function Footer() {
           <h2>Quick links</h2>
           <ul>
             <li><Link href="/#top">Home</Link></li>
-            <li><Link href="/#about">About Us</Link></li>
+            <li><Link href="/#who">Who It&apos;s For</Link></li>
             <li><Link href="/#programmes">Programmes</Link></li>
+            {showWebinars && <li><Link href="/#webinars">Webinars</Link></li>}
             <li><Link href="/#faq">FAQ</Link></li>
             <li><Link href="/#enrol">Upcoming Cohorts</Link></li>
             <li><Link href="/#testimonials">Testimonials</Link></li>
