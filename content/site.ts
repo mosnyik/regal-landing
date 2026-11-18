@@ -133,6 +133,22 @@ export const curriculum = {
       title: "Regulations and Frameworks",
       body: "Explore the laws and regulations organizations must follow, and the standards and frameworks, including NIST and ISO 27001, they use to guide security and compliance.",
     },
+    {
+      title: "Third-Party Risk",
+      body: "Learn how organizations identify, assess, monitor, and manage the risks that come from vendors, suppliers, and other external partners who access their systems, data, or services.",
+    },
+    {
+      title: "AI Risk Management",
+      body: "Understand how the risks of using artificial intelligence, including bias, security, privacy, and accountability concerns, are identified, assessed, and managed.",
+    },
+    {
+      title: "Internal Risk Assessment and Risk Treatment",
+      body: "Learn how to identify, analyze, and evaluate risks within an organization, then choose and apply a response: reduce, transfer, avoid, or accept the risk.",
+    },
+    {
+      title: "Policy and Controls",
+      body: "Understand how organizations develop policies and procedures, and how they implement, test, and monitor controls to reduce risk and meet compliance requirements.",
+    },
   ],
 };
 

@@ -59,6 +59,35 @@ export const Icons = {
     </Svg>
   ),
 
+  thirdParty: (
+    <Svg>
+      <circle cx="18" cy="5" r="3" />
+      <circle cx="6" cy="12" r="3" />
+      <circle cx="18" cy="19" r="3" />
+      <path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4" />
+    </Svg>
+  ),
+  ai: (
+    <Svg>
+      <rect x="6" y="6" width="12" height="12" rx="2" />
+      <rect x="9.5" y="9.5" width="5" height="5" rx="0.5" />
+      <path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4" />
+    </Svg>
+  ),
+  risk: (
+    <Svg>
+      <path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" />
+      <path d="M12 9v4M12 17h.01" />
+    </Svg>
+  ),
+  policy: (
+    <Svg>
+      <path d="M9 3h6v3H9z" />
+      <path d="M15 4.5h2a2 2 0 0 1 2 2V19a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6.5a2 2 0 0 1 2-2h2" />
+      <path d="M9 11h6M9 15h4" />
+    </Svg>
+  ),
+
   /* Who is this for */
   briefcase: (
     <Svg>

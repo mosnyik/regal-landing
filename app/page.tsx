@@ -39,7 +39,7 @@ const APPROACH = [
 ];
 
 const AUDIENCE_ICONS = [Icons.briefcase, Icons.scale, Icons.governance, Icons.monitor, Icons.calculator];
-const CURRICULUM_ICONS = [Icons.cyber, Icons.compliance];
+const CURRICULUM_ICONS = [Icons.cyber, Icons.compliance, Icons.thirdParty, Icons.ai, Icons.risk, Icons.policy];
 
 export default function Home() {
   const isOpen = enrolmentStatus === "open";
@@ -57,15 +57,15 @@ export default function Home() {
               {isOpen && <span> · Next cohort starts {starts}</span>}
             </p>
             <h1 id="hero-title" className="rise" style={{ ["--d" as string]: 1 }}>
-              Governance, Risk and Compliance (GRC) Academy
+              GRC Academy
             </h1>
             <p className="hero-promise rise" style={{ ["--d" as string]: 2 }}>
-              Build Practical GRC Skills. Become Industry-Ready.
+              Governance, Risk and Compliance
             </p>
             <p className="hero-lede rise" style={{ ["--d" as string]: 3 }}>
-              Regal Cyber Academy equips learners with practical knowledge and skills in Governance, Risk and
-              Compliance through live instructor-led sessions, hands-on labs, real-world examples and practical
-              projects.
+              Regal Cyber Academy teaches GRC through a focused curriculum, real-world enterprise scenarios and
+              hands-on labs, led by experienced professionals. Built for career changers, early-career professionals
+              and anyone moving into cybersecurity.
             </p>
             <div className="hero-actions rise" style={{ ["--d" as string]: 4 }}>
               <a className="btn btn-lg btn-outline" href="#programmes">
@@ -163,7 +163,7 @@ export default function Home() {
             <h2 id="learn-title">What You Will Learn</h2>
             <p className="sub">{curriculum.intro}</p>
           </div>
-          <ol className="grid-2">
+          <ol className="grid-3">
             {curriculum.areas.map((a, i) => (
               <li key={a.title} className="card card-line area">
                 <div className="area-top">
