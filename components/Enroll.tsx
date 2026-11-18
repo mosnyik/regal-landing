@@ -26,7 +26,7 @@ export function useEnrol() {
 }
 
 export function enrolLabel(status: EnrolmentStatus) {
-  return status === "open" ? "Enroll Now" : "Join the Waitlist";
+  return status === "open" ? "Enrol Now" : "Join the Waitlist";
 }
 
 /**
@@ -73,25 +73,28 @@ export function EnrolProvider({ status, children }: { status: EnrolmentStatus; c
 export function EnrolButton({
   className = "btn",
   label,
+  icon,
 }: {
   className?: string;
   /** Override only the open-state text; closed always reads "Join the Waitlist". */
   label?: string;
+  icon?: ReactNode;
 }) {
   const { status, open } = useEnrol();
   return (
     <button type="button" className={className} onClick={open} aria-haspopup="dialog">
-      {status === "open" ? (label ?? "Enroll Now") : "Join the Waitlist"}
+      {status === "open" ? (label ?? "Enrol Now") : "Join the Waitlist"}
+      {icon}
     </button>
   );
 }
 
 /** Plain-link variant for the footer "Quick Links". */
-export function EnrolLink() {
+export function EnrolLink({ className = "linklike" }: { className?: string }) {
   const { status, open } = useEnrol();
   return (
-    <button type="button" className="linklike" onClick={open} aria-haspopup="dialog">
-      {enrolLabel(status)}
+    <button type="button" className={className} onClick={open} aria-haspopup="dialog">
+      {enrolLabel(status)} &rarr;
     </button>
   );
 }
@@ -115,7 +118,7 @@ function EnrolForm() {
         <h2 id="modal-title">Thank you.</h2>
         <p>
           Your details have been received. You will now be taken to the payment page to complete your
-          enrollment.
+          enrolment.
         </p>
         {state.redirectTo && (
           <a className="btn" href={state.redirectTo}>
@@ -130,10 +133,10 @@ function EnrolForm() {
     <form action={action} noValidate className="form">
       <div className="form-head">
         <span className="kicker">{cohort.name}</span>
-        <h2 id="modal-title">Enroll in Regal Cyber Academy.</h2>
+        <h2 id="modal-title">Enrol in Regal Cyber Academy</h2>
         <p className="sub">
-          Complete the form below to enroll in an upcoming Regal Cyber Academy GRC cohort. After you submit
-          your details, you will be taken to the payment page to complete your enrollment.
+          Complete the form below to enrol in the upcoming Regal Cyber Academy GRC cohort. After you submit
+          your details, you will be taken to Stripe to pay securely and complete your enrolment.
         </p>
       </div>
       <FormMessage state={state} />
@@ -173,7 +176,7 @@ function EnrolForm() {
       />
       <Consent id="en-consent" state={state}>
         By checking this box, I consent to Regal Cyber Academy contacting me by email and text message about
-        the program, including enrollment, class schedules, updates and reminders. I understand that I can
+        the program, including enrolment, class schedules, updates and reminders. I understand that I can
         opt out at any time by following the unsubscribe link in emails or by replying STOP to text messages.
         I have read the{" "}
         <Link href="/privacy" target="_blank">
@@ -196,7 +199,7 @@ function WaitlistForm() {
         <span className="kicker">You&apos;re on the list</span>
         <h2 id="modal-title">Thank you.</h2>
         <p>
-          Thank you for joining the Regal Cyber Academy waitlist. We will email you when enrollment opens for
+          Thank you for joining the Regal Cyber Academy waitlist. We will email you when enrolment opens for
           the next cohort.
         </p>
       </div>
@@ -206,10 +209,10 @@ function WaitlistForm() {
   return (
     <form action={action} noValidate className="form">
       <div className="form-head">
-        <span className="kicker">Enrollment closed</span>
-        <h2 id="modal-title">Join the Waitlist.</h2>
+        <span className="kicker">Enrolment closed</span>
+        <h2 id="modal-title">Join the Waitlist</h2>
         <p className="sub">
-          Leave your details below and we will email you when enrollment opens for the next Regal Cyber Academy
+          Leave your details below and we will email you when enrolment opens for the next Regal Cyber Academy
           cohort.
         </p>
       </div>
@@ -226,7 +229,7 @@ function WaitlistForm() {
         autoComplete="email"
       />
       <Consent id="wl-consent" state={state}>
-        I agree to receive emails from Regal Cyber Academy about enrollment for the next cohort. I can
+        I agree to receive emails from Regal Cyber Academy about enrolment for the next cohort. I can
         unsubscribe at any time. I have read the{" "}
         <Link href="/privacy" target="_blank">
           Privacy Policy

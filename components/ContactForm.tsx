@@ -6,12 +6,12 @@ import { initialFormState } from "@/lib/validation";
 import { Field, FormMessage, SpamGuard, SubmitButton } from "./FormBits";
 
 const SUBJECTS = [
-  "Program information",
-  "Enrollment and payment",
+  "Is this programme right for me?",
+  "Programme content and schedule",
+  "Fees and payment",
   "Upcoming cohorts",
-  "Events and webinars",
   "Partnerships",
-  "Other",
+  "Something else",
 ];
 
 export function ContactForm() {
@@ -20,11 +20,11 @@ export function ContactForm() {
   if (state.status === "success") {
     return (
       <div className="form-success" role="status">
-        <span className="kicker">Inquiry sent</span>
-        <h3>Thank you.</h3>
+        <span className="kicker">Message sent</span>
+        <h3 className="form-title">Thank you.</h3>
         <p>
-          Thank you for contacting Regal Cyber Academy. Your inquiry has been submitted successfully. Our team
-          will get back to you by email.
+          Thank you for contacting Regal Cyber Academy. A real person on our team will get back to you
+          by email.
         </p>
       </div>
     );
@@ -33,7 +33,7 @@ export function ContactForm() {
   return (
     <form action={action} noValidate className="form">
       <div className="form-head">
-        <h3>Send Us an Inquiry.</h3>
+        <h3 className="form-title">Send us a message</h3>
         <p className="sub">Leave us a message below and our team will get back to you by email.</p>
       </div>
       <FormMessage state={state} />
@@ -50,12 +50,9 @@ export function ContactForm() {
           autoComplete="email"
         />
       </div>
-      <Field id="ct-subject" name="subject" label="Subject / Inquiry Type" state={state} required>
+      <Field id="ct-subject" name="subject" label="Subject / Enquiry Type" state={state} required>
         {({ defaultValue, ...p }) => (
-          <select {...p} defaultValue={defaultValue ?? ""}>
-            <option value="" disabled>
-              Choose one…
-            </option>
+          <select {...p} defaultValue={defaultValue ?? SUBJECTS[0]}>
             {SUBJECTS.map((s) => (
               <option key={s}>{s}</option>
             ))}
@@ -66,7 +63,9 @@ export function ContactForm() {
         {(p) => <textarea {...p} rows={5} />}
       </Field>
       <SpamGuard />
-      <SubmitButton pendingLabel="Sending…">Submit Inquiry</SubmitButton>
+      <SubmitButton pendingLabel="Sending…" className="btn btn-dark btn-block">
+        Send
+      </SubmitButton>
     </form>
   );
 }

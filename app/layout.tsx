@@ -1,18 +1,18 @@
 import type { Metadata, Viewport } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Anton, Archivo } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import { enrolmentStatus, site } from "@/content/site";
 import { EnrolLink, EnrolProvider } from "@/components/Enroll";
 import { Header } from "@/components/Header";
 import "./globals.css";
 
-const display = Anton({ variable: "--font-display", subsets: ["latin"], weight: "400" });
-const body = Archivo({ variable: "--font-body", subsets: ["latin"], weight: ["400", "500", "600", "700", "800"] });
+const display = Space_Grotesk({ variable: "--font-display", subsets: ["latin"], weight: ["500", "600", "700"] });
+const body = Inter({ variable: "--font-body", subsets: ["latin"] });
 
-const title = "Regal Cyber Academy | Governance, Risk and Compliance (GRC) Academy";
+const title = "Regal Cyber Academy | Become Work-Ready in Governance, Risk and Compliance";
 const description =
-  "Build practical GRC skills and become industry-ready. Live instructor-led sessions, hands-on labs, real-world examples and practical projects.";
+  "A 12-week, live instructor-led GRC programme with hands-on labs, real-world examples and a capstone project you can show employers. No GRC background needed.";
 
 export const metadata: Metadata = {
   // Absolute base for share links and preview images. Set SITE_URL to the live domain.
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = { themeColor: "#028090" };
+export const viewport: Viewport = { themeColor: "#0b2e33" };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
@@ -63,21 +63,19 @@ function Footer() {
       <div className="wrap footer-grid">
         <div className="footer-brand">
           <Image src="/brand/logo-on-dark.png" alt="Regal Cyber Academy" width={1128} height={254} />
-          <p>
-            Practical Governance, Risk and Compliance training through live instructor-led sessions, hands-on
-            labs and real-world projects.
-          </p>
+          <p>{site.description}</p>
         </div>
         <nav aria-label="Quick links">
-          <h2>Quick Links</h2>
+          <h2>Quick links</h2>
           <ul>
             <li><Link href="/#top">Home</Link></li>
             <li><Link href="/#about">About Us</Link></li>
-            <li><Link href="/#programs">Programs</Link></li>
-            <li><Link href="/#events">Events</Link></li>
+            <li><Link href="/#programmes">Programmes</Link></li>
+            <li><Link href="/#faq">FAQ</Link></li>
+            <li><Link href="/#enrol">Upcoming Cohorts</Link></li>
             <li><Link href="/#testimonials">Testimonials</Link></li>
             <li><Link href="/#contact">Contact Us</Link></li>
-            <li><EnrolLink /></li>
+            <li><EnrolLink className="linklike footer-enrol" /></li>
           </ul>
         </nav>
         <div>
@@ -91,11 +89,12 @@ function Footer() {
           <ul>
             <li><Link href="/privacy">Privacy Policy</Link></li>
             <li><Link href="/terms">Terms and Conditions</Link></li>
+            <li><Link href="/terms#refunds">Refund Policy</Link></li>
           </ul>
         </nav>
       </div>
       <div className="wrap footer-base">
-        <p>© {site.name}. All rights reserved.</p>
+        <p>© 2026 {site.name}. All rights reserved.</p>
       </div>
     </footer>
   );

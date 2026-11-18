@@ -7,7 +7,8 @@ import { EnrolButton } from "./Enroll";
 
 const NAV = [
   { href: "/#top", label: "Home" },
-  { href: "/#programs", label: "Programs" },
+  { href: "/#programmes", label: "Programmes" },
+  { href: "/#faq", label: "FAQ" },
   { href: "/#contact", label: "Contact Us" },
 ];
 
@@ -23,37 +24,39 @@ export function Header() {
 
   return (
     <header className="topbar">
-      <Link href="/#top" className="logo" aria-label="Regal Cyber Academy — home" onClick={() => setOpen(false)}>
-        <Image src="/brand/logo-color.png" alt="Regal Cyber Academy" width={1128} height={254} priority />
-      </Link>
+      <div className="wrap topbar-inner">
+        <Link href="/#top" className="logo" aria-label="Regal Cyber Academy — home" onClick={() => setOpen(false)}>
+          <Image src="/brand/logo-on-dark.png" alt="Regal Cyber Academy" width={1128} height={254} priority />
+        </Link>
 
-      <nav className={`nav${open ? " is-open" : ""}`} id="site-nav" aria-label="Main">
-        <ul>
-          {NAV.map((n) => (
-            <li key={n.href}>
-              <Link href={n.href} onClick={() => setOpen(false)}>
-                {n.label}
-              </Link>
+        <nav className={`nav${open ? " is-open" : ""}`} id="site-nav" aria-label="Main">
+          <ul>
+            {NAV.map((n) => (
+              <li key={n.href}>
+                <Link href={n.href} onClick={() => setOpen(false)}>
+                  {n.label}
+                </Link>
+              </li>
+            ))}
+            <li className="nav-cta" onClick={() => setOpen(false)}>
+              <EnrolButton className="btn btn-sm" />
             </li>
-          ))}
-          <li className="nav-cta" onClick={() => setOpen(false)}>
-            <EnrolButton className="btn btn-sm" />
-          </li>
-        </ul>
-      </nav>
+          </ul>
+        </nav>
 
-      <button
-        type="button"
-        className={`menu-btn${open ? " is-open" : ""}`}
-        aria-expanded={open}
-        aria-controls="site-nav"
-        aria-label={open ? "Close menu" : "Open menu"}
-        onClick={() => setOpen((o) => !o)}
-      >
-        <span />
-        <span />
-        <span />
-      </button>
+        <button
+          type="button"
+          className={`menu-btn${open ? " is-open" : ""}`}
+          aria-expanded={open}
+          aria-controls="site-nav"
+          aria-label={open ? "Close menu" : "Open menu"}
+          onClick={() => setOpen((o) => !o)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+      </div>
     </header>
   );
 }

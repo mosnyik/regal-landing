@@ -1,144 +1,122 @@
 /**
  * Regal Cyber Academy — site content.
  *
- * Everything the academy is expected to change (enrollment status, cohort dates,
- * events, testimonials, contact email) lives in this one file so it can later be
- * moved to a CMS without touching any components.
+ * Everything the academy is expected to change (enrolment status, cohort dates,
+ * price, FAQ, testimonial, contact email) lives in this one file so it can later
+ * be moved to a CMS without touching any components.
  *
- * Anything marked TODO is a placeholder from the blueprint ("[TO BE PROVIDED]")
- * or sample content that MUST be replaced before launch.
+ * Values in [square brackets] are placeholders from the design that MUST be
+ * replaced before launch. They are rendered as-is so they're easy to spot.
  */
 
 export type EnrolmentStatus = "open" | "closed";
 
 /**
- * Site-wide enrollment switch. Controls every enroll button (header, hero,
- * Section 5, final CTA, footer). Can be overridden per deployment with the
+ * Site-wide enrolment switch. Controls every enrol button (header, hero,
+ * cohort card, final CTA, footer). Can be overridden per deployment with the
  * ENROLMENT_STATUS env var ("open" | "closed") without a code change.
  */
-export const enrolmentStatus: EnrolmentStatus =
-  process.env.ENROLMENT_STATUS === "closed"
-    ? "closed"
-    : process.env.ENROLMENT_STATUS === "open"
-      ? "open"
-      : "open";
+export const enrolmentStatus: EnrolmentStatus = process.env.ENROLMENT_STATUS === "closed" ? "closed" : "open";
 
 export const site = {
   name: "Regal Cyber Academy",
   shortName: "Regal",
   description:
-    "Practical Governance, Risk and Compliance training through live instructor-led sessions, hands-on labs, real-world examples and practical projects.",
-  // TODO: [TO BE PROVIDED] official academy email
-  contactEmail: "info@regalcyberacademy.com",
-  // TODO: [TO BE PROVIDED] enrollment notification email
-  enrolmentEmail: "enroll@regalcyberacademy.com",
-  /** Event and cohort times are shown in this time zone. */
+    "Live, practical Governance, Risk and Compliance training that takes beginners to work-ready in 12 weeks.",
+  contactEmail: "admin@regalcyberacademy.com",
+  // TODO: confirm the enrolment notification email
+  enrolmentEmail: "admin@regalcyberacademy.com",
+  /** Cohort times are shown in this time zone. */
   timeZone: "America/New_York",
   // Payment: Stripe Checkout — configured with env vars, see lib/stripe.ts.
 };
 
 export const cohort = {
   name: "Spring 2027 Cohort",
-  enrolmentOpens: null as string | null, // TODO: [TO BE PROVIDED] e.g. "2026-10-01"
-  regularDeadline: null as string | null, // TODO: [TO BE PROVIDED]
+  season: "Spring 2027",
+  nextSeason: "Fall 2027",
   lateEnrolmentCloses: "2027-02-20",
   trainingStarts: "2027-01-25",
-  trainingStartsAt: "2027-01-25T23:00:00Z", // 6:00 PM ET — used by the countdown
   duration: "12 weeks",
-  seats: 40, // shown on the hero seal; set to null to hide
+  format: "Live online",
+  // TODO: programme fee as shown on the site, e.g. "$1,500". Must match STRIPE_PRICE_ID.
+  price: "[PRICE]",
+  // TODO: refund policy one-liner shown under the pay button.
+  refundNote: "[Refund policy, e.g. full refund before first class]",
 };
 
-/** Tools & frameworks ticker (Section 4). TODO: confirm the exact list with the academy. */
-export const tools = [
-  "NIST CSF 2.0",
-  "ISO/IEC 27001",
-  "NIST AI RMF",
-  "SOC 2",
-  "COBIT",
-  "NIST SP 800-53",
-  "PCI DSS",
-  "SOX",
-  "HIPAA",
-  "ISO 31000",
-  "GRC Platforms",
-  "Risk Registers",
-  "Vendor Questionnaires",
+export const instructor = {
+  name: "Debbie Ibinayo",
+  initials: "DI",
+  role: "Lead Instructor",
+  credential: "CRISC",
+  experience: "10 years in GRC",
+  experienceLong: "10 years in Governance, Risk and Compliance",
+  /** Path under /public, e.g. "/brand/debbie.jpg". Leave null to show the placeholder. */
+  photo: null as string | null,
+};
+
+export const roles = [
+  "GRC Analyst",
+  "Compliance Analyst",
+  "Risk Analyst",
+  "Third-Party Risk Analyst",
+  "IT Audit Associate",
 ];
 
-export type EventItem = {
-  id: string;
-  title: string;
-  description: string;
-  /** ISO date-time of the start, used to auto-label past events "Completed". */
-  start: string;
-  /** Human readable time + time zone, e.g. "7:00 PM – 8:30 PM ET". */
-  timeLabel: string;
-  format?: string;
-  registrationUrl: string;
-  /** Force an event to show as completed regardless of date. */
-  completed?: boolean;
-};
+export const frameworks = ["NIST CSF", "ISO 27001", "SOC 2", "COBIT"];
 
-/** TODO: sample events — replace with real ones. Add, edit or remove entries here. */
-export const events: EventItem[] = [
-  {
-    id: "grc-career-paths",
-    title: "Breaking into GRC: Career Paths and Skills",
-    description:
-      "A live session on what GRC professionals actually do, the roles available and how to build the skills employers look for.",
-    start: "2026-12-13T00:00:00Z", // Dec 12, 7:00 PM ET
-    timeLabel: "7:00 PM – 8:30 PM ET",
-    format: "Live online webinar",
-    registrationUrl: "https://example.com/register/grc-career-paths",
-  },
-  {
-    id: "ai-risk-101",
-    title: "AI Risk 101: Governing AI Responsibly",
-    description:
-      "An introduction to the governance, accountability and compliance questions organizations face when adopting AI.",
-    start: "2027-01-09T18:00:00Z", // Jan 9, 1:00 PM ET
-    timeLabel: "1:00 PM – 2:00 PM ET",
-    format: "Live online webinar",
-    registrationUrl: "https://example.com/register/ai-risk-101",
-  },
-  {
-    id: "info-session-fall",
-    title: "Fall Cohort Information Session",
-    description:
-      "Meet the instructors, see how the program runs and get your questions about enrollment answered.",
-    start: "2026-09-05T16:00:00Z", // Sep 5, 12:00 PM ET
-    timeLabel: "12:00 PM – 1:00 PM ET",
-    format: "Live online",
-    registrationUrl: "https://example.com/register/info-session",
-  },
+export const included = [
+  "12 weeks of live instructor-led sessions",
+  "Hands-on practical labs",
+  "Exam-style assessments",
+  "Portfolio-ready capstone project",
+  "Certificate of completion",
 ];
 
-export type Testimonial = {
-  name: string;
-  quote: string;
-  program?: string;
-  /** Optional — only include with the learner's permission. Path under /public. */
-  photo?: string;
+/** TODO: replace with a real learner result. Only use a photo/name with permission. */
+export const testimonial = {
+  quote:
+    "[A specific result in the learner's words: e.g. what they could do, or the role they landed, after the programme.]",
+  name: "[Learner name]",
+  initials: "LN",
+  detail: "[Now: job title, company] · [Cohort]",
 };
 
-/** TODO: SAMPLE testimonials — replace with real learner feedback before launch. */
-export const testimonials: Testimonial[] = [
+export type Faq = { q: string; a: string };
+
+/** TODO: answers in [brackets] need confirming by the academy. */
+export const faqs: Faq[] = [
   {
-    name: "Sample Learner A",
-    program: "Fall 2026 Cohort",
-    quote:
-      "The live sessions made the frameworks click for me. Working through the labs meant I could talk about risk assessments with real confidence in interviews.",
+    q: "Do I need a technical or GRC background?",
+    a: "No. The programme is built for beginners and career changers. [Add any recommended prerequisites, e.g. basic computer skills.]",
   },
   {
-    name: "Sample Learner B",
-    program: "Fall 2026 Cohort",
-    quote:
-      "I came from an operations background with no GRC experience. The capstone project gave me something concrete to show employers.",
+    q: "How much does it cost, and can I pay in instalments?",
+    a: "The programme fee is [PRICE], paid securely online via Stripe when you enrol. [Confirm whether instalment plans are available.]",
   },
   {
-    name: "Sample Learner C",
-    program: "Spring 2026 Cohort",
-    quote:
-      "Third-party and AI risk were the modules I didn't know I needed. The instructors connected every topic back to how organizations actually work.",
+    q: "When are the live classes held?",
+    a: "Classes are held live online over 12 weeks. [Add the class days and times, with time zone.]",
+  },
+  {
+    q: "Are the sessions recorded?",
+    a: "This is a live programme, not a library of recorded videos. You learn in real time with your instructor and cohort. [Confirm what happens if a learner misses a session.]",
+  },
+  {
+    q: "What will I have at the end?",
+    a: "Practical GRC skills, hands-on lab experience, a portfolio-ready capstone project you can show employers, and a certificate of completion.",
+  },
+  {
+    q: "What happens after I enrol?",
+    a: "After you submit your details you'll be taken to Stripe to pay securely. Once payment is confirmed you'll get a receipt by email, and we'll email you before training starts with your class schedule and everything you need.",
+  },
+  {
+    q: "What is your refund policy?",
+    a: "[Refund policy, e.g. full refund before the first class.]",
+  },
+  {
+    q: "What if enrolment is closed?",
+    a: "Cohorts run twice a year, in Spring and Fall. When enrolment is closed you can join the waitlist and we'll email you as soon as enrolment opens for the next cohort.",
   },
 ];
