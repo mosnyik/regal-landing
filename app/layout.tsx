@@ -77,7 +77,7 @@ function Footer() {
             <li><Link href="/#programmes">Programmes</Link></li>
             {showWebinars && <li><Link href="/#webinars">Events &amp; Webinars</Link></li>}
             <li><Link href="/#faq">FAQ</Link></li>
-            <li><Link href="/#enrol">Upcoming Cohorts</Link></li>
+            <li><Link href="/#enroll">Upcoming Cohorts</Link></li>
             <li><Link href="/#testimonials">Testimonials</Link></li>
             <li><Link href="/#contact">Contact Us</Link></li>
             <li><EnrolLink className="linklike footer-enrol" /></li>

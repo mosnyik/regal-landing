@@ -46,7 +46,7 @@ export async function createEnrollmentCheckout(opts: {
     },
     allow_promotion_codes: true,
     success_url: `${siteUrl()}/enroll/success?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${siteUrl()}/?payment=cancelled#enrol`,
+    cancel_url: `${siteUrl()}/?payment=cancelled#enroll`,
   });
   if (!session.url) throw new Error("Stripe did not return a Checkout URL");
   return session;

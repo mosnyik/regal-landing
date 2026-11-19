@@ -134,7 +134,6 @@ export default function Home() {
       <section className="section who dark" id="who" aria-labelledby="who-title">
         <div className="wrap who-grid">
           <div className="section-head who-head">
-            <p className="eyebrow">Who it&apos;s for</p>
             <h2 id="who-title">Who Is This For?</h2>
             <p className="sub">{audience.intro}</p>
           </div>
@@ -202,14 +201,13 @@ export default function Home() {
       </section>
 
       {/* ---------------------------------------------- COHORT / ENROLMENT */}
-      <section className="section cohort dark" id="enrol" aria-labelledby="cohort-title">
+      <section className="section cohort dark" id="enroll" aria-labelledby="cohort-title">
         <div className="wrap">
           <div className="section-head">
-            <p className="eyebrow">Upcoming cohort</p>
             <h2 id="cohort-title">Your GRC Journey Starts Here.</h2>
             <p className="sub">
-              Cohorts run twice a year, in Spring and Fall. The {cohort.season} cohort is below; {cohort.nextSeason}{" "}
-              dates will be announced soon.
+              Our program runs twice a year, with a Spring cohort and a Fall cohort. Enroll in the upcoming cohort to
+              start building practical GRC skills.
             </p>
           </div>
 
@@ -217,7 +215,7 @@ export default function Home() {
             <header>
               <h3>{cohort.name}</h3>
               <span className={`status-pill${isOpen ? "" : " is-closed"}`}>
-                {isOpen ? "Enrolment open" : "Enrolment closed"}
+                {isOpen ? "Now enrolling" : "Enrollment closed"}
               </span>
             </header>
             <dl>
@@ -230,7 +228,7 @@ export default function Home() {
                 <dd>{cohort.duration}</dd>
               </div>
               <div>
-                <dt>Late enrolment closes</dt>
+                <dt>Late enrollment closes</dt>
                 <dd>{fmt(cohort.lateEnrolmentCloses)}</dd>
               </div>
               <div>
@@ -239,19 +237,11 @@ export default function Home() {
               </div>
             </dl>
             <footer className="cohort-cta">
-              <div>
-                <h3>Ready to Start Your GRC Journey?</h3>
-                <p>
-                  {isOpen
-                    ? "Twelve weeks from now, you could be applying for GRC roles with real projects to show for it."
-                    : `Enrolment for this cohort is closed. Join the waitlist and we'll email you when enrolment opens for the ${cohort.nextSeason} cohort.`}
-                </p>
-              </div>
               <div className="cohort-actions">
+                <EnrolButton className="btn btn-lg" icon={Icons.arrowRight} />
                 <a className="btn btn-lg btn-outline" href="#contact">
                   Talk to us first
                 </a>
-                <EnrolButton className="btn btn-lg" icon={Icons.arrowRight} />
               </div>
             </footer>
           </article>
@@ -263,11 +253,8 @@ export default function Home() {
         <div className="wrap faq-grid">
           <div className="faq-intro">
             <p className="eyebrow">FAQ</p>
-            <h2 id="faq-title">Questions before you enrol</h2>
+            <h2 id="faq-title">Questions before you enroll</h2>
             <p className="sub">Can&apos;t find your answer? Message us and we&apos;ll reply by email.</p>
-            <a className="btn btn-sm btn-outline" href="#contact">
-              Ask a question
-            </a>
           </div>
           <div className="faq-list">
             {faqs.map((f, i) => (
@@ -309,7 +296,7 @@ export default function Home() {
       {/* Mobile action bar */}
       <div className="actionbar">
         <span>
-          <b>{isOpen ? cohort.name : "Enrolment closed"}</b>
+          <b>{isOpen ? cohort.name : "Enrollment closed"}</b>
           <br />
           {isOpen ? `Starts ${starts}` : "Join the waitlist"}
         </span>

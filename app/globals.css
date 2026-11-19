@@ -272,8 +272,7 @@ svg { flex: none; }
 .cohort-card dl { display: grid; grid-template-columns: repeat(4, 1fr); margin: 0; }
 .cohort-card dl div { padding: 1.5rem; border-right: 1px solid var(--line); }
 .cohort-card dl div:last-child { border-right: 0; }
-.cohort-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem 3rem; padding: clamp(1.5rem, 3vw, 2.25rem) 1.5rem; border-top: 1px solid var(--line); background: var(--paper); }
-.cohort-cta > div:first-child { flex: 1 1 340px; display: grid; gap: 0.4rem; }
+.cohort-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 1.5rem 3rem; padding: clamp(1.5rem, 3vw, 2.25rem) 1.5rem; border-top: 1px solid var(--line); background: var(--paper); }
 .cohort-cta h3 { font-size: clamp(1.2rem, 2vw, 1.4rem); }
 .cohort-cta p { color: var(--muted); font-size: 0.95rem; max-width: 52ch; }
 .cohort-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; }
