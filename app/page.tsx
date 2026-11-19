@@ -5,11 +5,13 @@ import {
   enrolmentStatus,
   faqs,
   heroPoints,
+  instructor,
   roles,
   site,
   testimonial,
   webinars,
 } from "@/content/site";
+import Image from "next/image";
 import { ContactForm } from "@/components/ContactForm";
 import { EnrolButton } from "@/components/Enroll";
 import { Icons } from "@/components/Icons";
@@ -174,6 +176,33 @@ export default function Home() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------- INSTRUCTOR */}
+      <section className="section instructor" id="instructor" aria-labelledby="instructor-name">
+        <div className="wrap">
+          <article className="instructor-card">
+            <div className="instructor-photo">
+              {instructor.photo ? (
+                <Image src={instructor.photo} alt={instructor.name} fill sizes="(max-width: 820px) 92vw, 460px" />
+              ) : (
+                <span className="photo-placeholder">
+                  {Icons.user}
+                  <span>[Instructor photo]</span>
+                </span>
+              )}
+            </div>
+            <div className="instructor-body">
+              <p className="eyebrow">Your lead instructor</p>
+              <h2 id="instructor-name">{instructor.name}</h2>
+              <p className="muted">{instructor.role}</p>
+              <ul className="tags">
+                <li>{instructor.credential}</li>
+                <li>{instructor.experience}</li>
+              </ul>
+            </div>
+          </article>
         </div>
       </section>
 

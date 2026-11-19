@@ -47,6 +47,16 @@ export const cohort = {
  */
 export const cohortRecordLabel = `${cohort.name} ${cohort.trainingStarts.slice(0, 4)}`;
 
+/** Lead instructor card. */
+export const instructor = {
+  name: "Debbie Ibinayo",
+  role: "Lead Instructor",
+  credential: "CRISC",
+  experience: "10 years in GRC",
+  /** Path under /public, e.g. "/brand/debbie.jpg". Leave null to show the placeholder. */
+  photo: null as string | null,
+};
+
 /* ------------------------------------------------------------------ */
 /* Webinars & events                                                   */
 /* ------------------------------------------------------------------ */

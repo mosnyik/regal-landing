@@ -229,6 +229,16 @@ svg { flex: none; }
 .area p { font-size: 0.98rem; line-height: 1.65; }
 
 /* -------------------------------------------------------- Testimonial */
+/* Instructor */
+.instructor { background: var(--paper); }
+.instructor-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; max-width: 960px; margin-inline: auto; background: var(--white); color: var(--text); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-card); }
+.instructor-photo { position: relative; align-self: stretch; min-height: 300px; background: var(--mint-soft); }
+.instructor-photo img { object-fit: cover; }
+.photo-placeholder { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 0.5rem; color: var(--teal); font-size: 0.85rem; font-weight: 600; }
+.instructor-body { display: grid; gap: 0.6rem; justify-items: start; padding: clamp(1.5rem, 4vw, 2.75rem); }
+.instructor-body h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); }
+.tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.4rem; }
+.tags li { padding: 0.35rem 0.75rem; border-radius: 8px; background: var(--paper); font-size: 0.85rem; font-weight: 600; }
 .testimonial { background: var(--white); border-top: 1px solid var(--line); }
 .center { text-align: center; }
 .testimonial h2 { margin-bottom: 2.25rem; }
@@ -383,7 +393,8 @@ svg { flex: none; }
   .cohort-card dl div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
 }
 @media (max-width: 900px) {
-  .hero.has-aside .hero-grid, .who-grid, .faq-grid { grid-template-columns: 1fr; }
+  .hero.has-aside .hero-grid, .who-grid, .faq-grid, .instructor-card { grid-template-columns: 1fr; }
+  .instructor-photo { min-height: 0; aspect-ratio: 16 / 9; }
   .hero-aside { max-width: 520px; }
   .faq-intro, .who-head { position: static; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
