@@ -1,16 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Fraunces } from "next/font/google";
 import { enrolmentStatus, site, webinars } from "@/content/site";
 import { EnrolLink, EnrolProvider } from "@/components/Enroll";
 import { Header } from "@/components/Header";
 import { WebinarBar } from "@/components/Webinar";
+// Headings: Newsreader, an editorial serif, self-hosted from the package (no build-time fetch).
+import "@fontsource-variable/newsreader/opsz.css";
+import "@fontsource-variable/newsreader/opsz-italic.css";
 import "./globals.css";
-
-// Headings: Beaumont uses Ofelia Text (paid). Fraunces is the free stand-in; if the
-// client licenses Ofelia, add its @font-face and it takes over (see --display in globals.css).
-const display = Fraunces({ variable: "--font-display", subsets: ["latin"], axes: ["opsz", "SOFT"] });
 
 const title = "Regal Cyber Academy | Become Work-Ready in Governance, Risk and Compliance";
 const description =
@@ -40,13 +38,13 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = { themeColor: "#ffffff" };
+export const viewport: Viewport = { themeColor: "#f7f4ee" };
 
 const showWebinars = webinars.enabled && webinars.items.length > 0;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en-US" className={display.variable}>
+    <html lang="en-US">
       <head>
         {/* Body font: Chillax, served free from Fontshare's CDN */}
         <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
