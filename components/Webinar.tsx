@@ -38,14 +38,13 @@ export function WebinarBar({ items }: { items: Webinar[] }) {
   const w = useNextWebinar(items);
   if (!w) return null;
   return (
-    <a className="webinar-bar" href={w.registrationUrl} target="_blank" rel="noopener noreferrer">
+    <a className="webinar-bar" href={w.registrationUrl}>
       <span className="webinar-bar-tag">{w.label ?? "Webinar"}</span>
       <span className="webinar-bar-text">
         {w.title} · {shortFmt.format(new Date(w.start))}
       </span>
       <span className="webinar-bar-cta">
         Register {Icons.arrowRight}
-        <span className="sr-only"> (opens in a new tab)</span>
       </span>
     </a>
   );
@@ -75,9 +74,8 @@ export function WebinarCard({ items }: { items: Webinar[] }) {
         </div>
       </div>
       <p className="webinar-desc">{w.description}</p>
-      <a className="btn btn-white btn-block" href={w.registrationUrl} target="_blank" rel="noopener noreferrer">
+      <a className="btn btn-white btn-block" href={w.registrationUrl}>
         Register for free {Icons.arrowRight}
-        <span className="sr-only"> (opens in a new tab)</span>
       </a>
     </article>
   );

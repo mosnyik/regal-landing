@@ -93,9 +93,7 @@ function Footer() {
           <h2>Legal</h2>
           <ul>
             <li><Link href="/privacy">Privacy Policy</Link></li>
-            <li><Link href="/terms">Terms and Conditions</Link></li>
-            <li><Link href="/terms#refunds">Refund Policy</Link></li>
-          </ul>
+            <li><Link href="/terms">Terms and Conditions</Link></li>          </ul>
         </nav>
       </div>
       <div className="wrap footer-base">

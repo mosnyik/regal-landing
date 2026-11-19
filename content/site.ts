@@ -39,10 +39,7 @@ export const cohort = {
   lateEnrolmentCloses: "2027-02-20",
   trainingStarts: "2027-01-25",
   duration: "12 weeks",
-  format: "Live online",
-  // TODO: refund policy one-liner shown under the pay button.
-  refundNote: "[Refund policy, e.g. full refund before first class]",
-};
+  format: "Live online",};
 
 /**
  * Internal cohort label for enrolment records and Stripe metadata. Includes the
@@ -90,7 +87,7 @@ export const webinars = {
         "What GRC professionals actually do, the roles available and how to build the skills employers look for.",
       start: "2026-12-12T00:00:00Z",
       timeLabel: "7:00 PM – 8:30 PM ET",
-      registrationUrl: "https://example.com/register",
+      registrationUrl: "/#webinars",
     },
   ] as Webinar[],
 };
