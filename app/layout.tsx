@@ -1,15 +1,16 @@
 import type { Metadata, Viewport } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Fraunces } from "next/font/google";
 import { enrolmentStatus, site, webinars } from "@/content/site";
 import { EnrolLink, EnrolProvider } from "@/components/Enroll";
 import { Header } from "@/components/Header";
 import { WebinarBar } from "@/components/Webinar";
 import "./globals.css";
 
-const display = Space_Grotesk({ variable: "--font-display", subsets: ["latin"], weight: ["500", "600", "700"] });
-const body = Inter({ variable: "--font-body", subsets: ["latin"] });
+// Headings: Beaumont uses Ofelia Text (paid). Fraunces is the free stand-in; if the
+// client licenses Ofelia, add its @font-face and it takes over (see --display in globals.css).
+const display = Fraunces({ variable: "--font-display", subsets: ["latin"], axes: ["opsz", "SOFT"] });
 
 const title = "Regal Cyber Academy | Become Work-Ready in Governance, Risk and Compliance";
 const description =
@@ -45,7 +46,13 @@ const showWebinars = webinars.enabled && webinars.items.length > 0;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en-US" className={`${display.variable} ${body.variable}`}>
+    <html lang="en-US" className={display.variable}>
+      <head>
+        {/* Body font: Chillax, served free from Fontshare's CDN */}
+        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="anonymous" />
+        <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=chillax@400,500,600&display=swap" />
+      </head>
       <body>
         <a className="skip" href="#top">
           Skip to content
@@ -72,14 +79,14 @@ function Footer() {
         <nav aria-label="Quick links">
           <h2>Quick links</h2>
           <ul>
-            <li><Link href="/#top">Home</Link></li>
-            <li><Link href="/#who">Who It&apos;s For</Link></li>
-            <li><Link href="/#programmes">Programmes</Link></li>
-            {showWebinars && <li><Link href="/#webinars">Events &amp; Webinars</Link></li>}
-            <li><Link href="/#faq">FAQ</Link></li>
+            <li><Link href="/">Home</Link></li>
+            <li><Link href="/programmes#who">Who It&apos;s For</Link></li>
+            <li><Link href="/programmes">Programmes</Link></li>
+            {showWebinars && <li><Link href="/webinars">Events &amp; Webinars</Link></li>}
+            <li><Link href="/faq">FAQ</Link></li>
             <li><Link href="/#enroll">Upcoming Cohorts</Link></li>
             <li><Link href="/#testimonials">Testimonials</Link></li>
-            <li><Link href="/#contact">Contact Us</Link></li>
+            <li><Link href="/contact">Contact Us</Link></li>
             <li><EnrolLink className="linklike footer-enrol" /></li>
           </ul>
         </nav>

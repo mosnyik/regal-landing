@@ -97,7 +97,7 @@ export const webinars = {
         "What GRC professionals actually do, the roles available and how to build the skills employers look for.",
       start: "2026-12-12T00:00:00Z",
       timeLabel: "7:00 PM – 8:30 PM ET",
-      registrationUrl: "/#webinars",
+      registrationUrl: "/webinars",
     },
   ] as Webinar[],
 };

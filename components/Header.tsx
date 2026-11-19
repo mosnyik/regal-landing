@@ -2,19 +2,21 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { EnrolButton } from "./Enroll";
 
 const NAV = [
-  { href: "/#top", label: "Home" },
-  { href: "/#programmes", label: "Programmes" },
-  { href: "/#webinars", label: "Events & Webinars", webinar: true },
-  { href: "/#faq", label: "FAQ" },
-  { href: "/#contact", label: "Contact Us" },
+  { href: "/", label: "Home" },
+  { href: "/programmes", label: "Programmes" },
+  { href: "/webinars", label: "Events & Webinars", webinar: true },
+  { href: "/faq", label: "FAQ" },
+  { href: "/contact", label: "Contact Us" },
 ];
 
 export function Header({ showWebinars = false }: { showWebinars?: boolean }) {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
   const nav = NAV.filter((n) => !n.webinar || showWebinars);
 
   useEffect(() => {
@@ -27,7 +29,7 @@ export function Header({ showWebinars = false }: { showWebinars?: boolean }) {
   return (
     <header className="topbar">
       <div className="wrap topbar-inner">
-        <Link href="/#top" className="logo" aria-label="Regal Cyber Academy — home" onClick={() => setOpen(false)}>
+        <Link href="/" className="logo" aria-label="Regal Cyber Academy — home" onClick={() => setOpen(false)}>
           <Image src="/brand/logo-color.png" alt="Regal Cyber Academy" width={1128} height={254} priority />
         </Link>
 
@@ -35,7 +37,11 @@ export function Header({ showWebinars = false }: { showWebinars?: boolean }) {
           <ul>
             {nav.map((n) => (
               <li key={n.href}>
-                <Link href={n.href} onClick={() => setOpen(false)}>
+                <Link
+                  href={n.href}
+                  aria-current={pathname === n.href ? "page" : undefined}
+                  onClick={() => setOpen(false)}
+                >
                   {n.label}
                 </Link>
               </li>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useSyncExternalStore, type ReactNode } from "react";
 import { site, type Webinar } from "@/content/site";
 import { Icons } from "./Icons";
 
@@ -51,9 +51,9 @@ export function WebinarBar({ items }: { items: Webinar[] }) {
 }
 
 /** Prominent webinar card for the homepage hero. */
-export function WebinarCard({ items }: { items: Webinar[] }) {
+export function WebinarCard({ items, empty = null }: { items: Webinar[]; empty?: ReactNode }) {
   const w = useNextWebinar(items);
-  if (!w) return null;
+  if (!w) return empty;
   const d = new Date(w.start);
   return (
     <article className="webinar-card" id="webinars" aria-labelledby="webinar-title">
