@@ -8,6 +8,8 @@ import { WebinarBar } from "@/components/Webinar";
 // Headings: Newsreader, an editorial serif, self-hosted from the package (no build-time fetch).
 import "@fontsource-variable/newsreader/opsz.css";
 import "@fontsource-variable/newsreader/opsz-italic.css";
+// Body: Instrument Sans, self-hosted the same way.
+import "@fontsource-variable/instrument-sans/wght.css";
 import "./globals.css";
 
 const title = "Regal Cyber Academy | Become Work-Ready in Governance, Risk and Compliance";
@@ -45,12 +47,6 @@ const showWebinars = webinars.enabled && webinars.items.length > 0;
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en-US">
-      <head>
-        {/* Body font: Chillax, served free from Fontshare's CDN */}
-        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="anonymous" />
-        <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=chillax@400,500,600&display=swap" />
-      </head>
       <body>
         <a className="skip" href="#top">
           Skip to content

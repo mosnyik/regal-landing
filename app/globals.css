@@ -1,6 +1,6 @@
 /* Regal Cyber Academy — landing page.
    Quiet-luxury direction: warm ivory paper, deep teal ink, Newsreader serif
-   headings with Chillax body text, hairline rules instead of shadows, and
+   headings with Instrument Sans body text, hairline rules instead of shadows, and
    generous space. The brand's teal and mint are used sparingly as accents. */
 :root {
   /* Paper and ink */
@@ -26,7 +26,7 @@
   --danger: #a3271b;
 
   --display: "Newsreader Variable", "Iowan Old Style", Georgia, serif;
-  --body: "Chillax", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --body: "Instrument Sans Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --radius-sm: 4px;
   --radius: 6px;
