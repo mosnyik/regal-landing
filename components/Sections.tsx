@@ -12,12 +12,10 @@ import {
   roles,
   site,
   testimonial,
-  webinars,
 } from "@/content/site";
 import { ContactForm } from "./ContactForm";
 import { EnrolButton } from "./Enroll";
 import { Icons } from "./Icons";
-import { WebinarCard } from "./Webinar";
 
 /*
  * Every page section lives here so the pages (Home, Programmes, Events &
@@ -31,7 +29,6 @@ const fmt = (iso: string) =>
 
 const isOpen = enrolmentStatus === "open";
 const starts = fmt(cohort.trainingStarts);
-export const showWebinars = webinars.enabled && webinars.items.length > 0;
 
 const APPROACH = [
   {
@@ -69,13 +66,10 @@ export function PageHeader({ eyebrow, title, children }: { eyebrow: string; titl
 
 export function Hero() {
   return (
-    <section className={`hero${showWebinars ? " has-aside" : ""}`} aria-labelledby="hero-title">
-      <div className="wrap hero-grid">
+    <section className="hero" aria-labelledby="hero-title">
+      <div className="wrap">
         <div className="hero-copy">
-          <p className="hero-eyebrow rise">
-            {site.name}
-            {isOpen && <span> · Next cohort starts {starts}</span>}
-          </p>
+          <p className="hero-eyebrow rise">{site.name}</p>
           <h1 id="hero-title" className="rise" style={{ ["--d" as string]: 1 }}>
             GRC Academy
           </h1>
@@ -83,9 +77,8 @@ export function Hero() {
             Governance, Risk and Compliance
           </p>
           <p className="hero-lede rise" style={{ ["--d" as string]: 3 }}>
-            Regal Cyber Academy teaches GRC through a focused curriculum, real-world enterprise scenarios and
-            hands-on labs, led by experienced professionals. Built for career changers, early-career professionals
-            and anyone moving into cybersecurity.
+            Live, hands-on GRC training led by experienced professionals. Built for career changers and anyone
+            moving into cybersecurity.
           </p>
           <div className="hero-actions rise" style={{ ["--d" as string]: 4 }}>
             <Link className="btn btn-lg btn-outline" href="/programmes">
@@ -104,12 +97,6 @@ export function Hero() {
             ))}
           </ul>
         </div>
-
-        {showWebinars && (
-          <div className="hero-aside rise" style={{ ["--d" as string]: 3 }}>
-            <WebinarCard items={webinars.items} />
-          </div>
-        )}
       </div>
     </section>
   );
@@ -243,6 +230,8 @@ export function Instructor() {
 }
 
 export function Testimonials() {
+  // Hidden until the placeholder quote in content/site.ts is replaced with a real one.
+  if (testimonial.quote.trim().startsWith("[")) return null;
   return (
     <section className="section testimonial" id="testimonials" aria-labelledby="testimonials-title">
       <div className="wrap">

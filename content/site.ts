@@ -106,7 +106,6 @@ export const webinars = {
 
 /** Short points under the hero buttons. */
 export const heroPoints = [
-  "Live classes, not recordings",
   "No GRC background required",
   "Portfolio-ready capstone project",
   "Resume and interview preparation",
@@ -160,6 +159,10 @@ export const curriculum = {
 };
 
 /** TODO: replace with a real learner result. Only use a photo/name with permission. */
+/**
+ * Learner testimonial. The Testimonials section stays hidden while the quote
+ * is a "[placeholder]" (starts with "[") and appears once a real quote is in.
+ */
 export const testimonial = {
   quote:
     "[A specific result in the learner's words: e.g. what they could do, or the role they landed, after the programme.]",
